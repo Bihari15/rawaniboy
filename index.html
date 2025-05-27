@@ -83,37 +83,32 @@
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
       100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
+
+    .ads-bottom {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+    }
   </style>
 </head>
 <body>
   <h1>My Tools & Songs Collection</h1>
   <div class="note">Note: Use PC for better experience</div>
 
-  <!-- Ad block at top (optional) -->
-  <ins class="adsbygoogle"
-       style="display:block; text-align:center;"
-       data-ad-client="ca-pub-1149528479085108"
-       data-ad-slot="1234567890"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
   <div class="link-container">
-    <a class="tool-link" href="tools.html">
+    <a class="tool-link" href="tools.html" aria-label="Tools">
       <i class="fas fa-tools"></i> Tools
     </a>
-    <a class="tool-link" href="https://bihari2007.github.io/chatbot/">
+    <a class="tool-link" href="https://bihari2007.github.io/chatbot/" aria-label="Chatbot">
       <i class="fas fa-robot"></i> Chatbot
     </a>
-    <a class="tool-link" href="https://aman-anish.github.io/songs/">
+    <a class="tool-link" href="https://aman-anish.github.io/songs/" aria-label="Songs">
       <i class="fas fa-music"></i> Songs
     </a>
   </div>
 
+  <!-- Snowfall Script -->
   <script>
-    // Snowfall
     function createSnowflake() {
       const snowflake = document.createElement("div");
       snowflake.classList.add("snowflake");
@@ -128,7 +123,20 @@
     setInterval(createSnowflake, 120);
   </script>
 
-  <!-- AdSense loader at bottom (required once per page) -->
+  <!-- Google AdSense (Bottom Ad) -->
+  <div class="ads-bottom">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1149528479085108"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <!-- AdSense Loader Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1149528479085108"
     crossorigin="anonymous"></script>
 </body>

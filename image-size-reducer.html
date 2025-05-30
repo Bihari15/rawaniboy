@@ -1,34 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IMAGE SIZE REDUCER BY AMAN-ANISH</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <link rel="stylesheet" href="imgsizereducer.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1149528479085108"
-     crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
   <link rel="icon" type="image/png" href="aa.png">
-  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow-y: auto;
+      color: #fff;
+      background: linear-gradient(135deg, #000014, #0a0a40);
+    }
+
+    canvas#stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 300px;
+      margin: 100px auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .logo-image {
+      display: block;
+      margin: 0 auto 1.5rem auto;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .custom-file-upload {
+      display: inline-block;
+      padding: 10px 16px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 12px rgba(106, 17, 203, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .custom-file-upload:hover {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+
+    .custom-file-upload input[type="file"] {
+      display: none;
+    }
+
+    .styled-button, select {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 10px;
+      width: 100%;
+      box-shadow: 0 4px 10px rgba(106, 17, 203, 0.3);
+    }
+
+    .styled-button:hover {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+
+    select {
+      appearance: none;
+      outline: none;
+      border: none;
+    }
+
+    #cropContainer, #croppedPreview {
+      display: none;
+      margin-top: 1rem;
+    }
+
+    #croppedPreview {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+  </style>
 </head>
 <body>
   <canvas id="stars"></canvas>
   <div class="container">
     <h1>IMAGE SIZE REDUCER BY Rawani Boy</h1>
     <img src="aa.png" alt="AA Logo" class="logo-image">
-       
+    
     <label class="custom-file-upload">
       <input type="file" id="imageInput" accept="image/*">
       Choose Image
     </label>
+
     <div id="cropContainer">
       <img id="cropImage" style="max-width: 100%;">
       <button id="cropBtn" class="styled-button">Crop</button>
     </div>
+
     <img id="croppedPreview" alt="Cropped Image">
+
     <select id="sizeOptions">
       <option value="" disabled selected>Select Size</option>
       <option value="10">10 KB</option>
@@ -37,11 +147,13 @@
       <option value="100">100 KB</option>
       <option value="300">300 KB</option>
     </select>
+
     <select id="formatOptions">
       <option value="" disabled selected>Select Format</option>
       <option value="image">Image</option>
       <option value="pdf">PDF</option>
     </select>
+
     <button id="downloadBtn" class="styled-button" disabled>Download</button>
   </div>
 
@@ -138,56 +250,9 @@
     function downloadPDF(dataUrl) {
       const { jsPDF } = window.jspdf;
       const pdf = new jsPDF();
-      const imgProps = pdf.getImageProperties(dataUrl);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      pdf.addImage(dataUrl, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save('AR brother.pdf');
+      pdf.addImage(dataUrl, 'JPEG', 15, 40, 180, 160);
+      pdf.save('RawaniBoy.pdf');
     }
-
-    // Star background animation
-    const canvas = document.getElementById('stars');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const stars = Array.from({ length: 125 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      r: Math.random() * 1.5 + 0.5
-    }));
-
-    function animateStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      stars.forEach((star, i) => {
-        star.x += star.vx;
-        star.y += star.vy;
-
-        if (star.x < 0 || star.x > canvas.width) star.vx *= -1;
-        if (star.y < 0 || star.y > canvas.height) star.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-        ctx.fillStyle = '#ffffff';
-        ctx.fill();
-
-        for (let j = i + 1; j < stars.length; j++) {
-          const dx = stars[i].x - stars[j].x;
-          const dy = stars[i].y - stars[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < 100) {
-            ctx.beginPath();
-            ctx.moveTo(stars[i].x, stars[i].y);
-            ctx.lineTo(stars[j].x, stars[j].y);
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-            ctx.stroke();
-          }
-        }
-      });
-      requestAnimationFrame(animateStars);
-    }
-    animateStars();
   </script>
 </body>
 </html>

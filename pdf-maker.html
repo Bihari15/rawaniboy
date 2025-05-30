@@ -17,7 +17,8 @@
       color: #fff;
       min-height: 100vh;
       position: relative;
-      overflow: hidden;
+      overflow-y: auto;  /* Allow vertical scrolling */
+      padding-bottom: 50px;  /* Ensure enough space at the bottom */
     }
     canvas#stars {
       position: fixed;
@@ -31,7 +32,7 @@
       margin: 20px 0;
       font-weight: 600;
     }
-    
+
     .logo-image {
     display: block;
     margin: 0 auto 1.5rem auto;
@@ -42,7 +43,7 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border: 2px solid rgba(255, 255, 255, 0.2);
     }
-    
+
     .upload-container {
       background: rgba(255, 255, 255, 0.05);
       padding: 20px;

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <title>Sad Songs by Aman-Anish</title>
+   <link rel="stylesheet" href="sad.css">
+</head>
+<body>
+  <button class="menu-btn" id="menuBtn" onclick="toggleSidebar()">Menu</button>
+
+  <div class="sidebar" id="sidebar">
+    <a href="https://aman-anish.github.io/songs/">Home</a>
+    <a href="romantic.html">Romantic Songs</a>
+    <a href="bhojpuri.html">Bhojpuri Songs</a>
+    <a href="about.html">About us</a>
+  </div>
+
+  <h1>Sad Songs by <br>Aman-Anish</h1>
+  <img src="images/logo-2.png" alt="Logo 2" class="logo">
+  <input type="text" id="searchBar" placeholder="Search for a song or artist..." oninput="searchSong()">
+
+  <div class="stars" id="stars"></div>
+
+  <div class="player" id="player1">
+    <div class="song-title">1. Lo Maan Liya lofi</div>
+    <div class="artist">Artist: Arijit Singh</div>
+    <audio id="audio1" src="songs/sad/Lo-Maan-Liya-(lofi).mp3" lazy></audio>
+    <div class="visualizer-container" id="viz1">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    <div class="progress-container" onclick="seek(event, 1)">
+      <div class="progress-filled" id="progress1"></div>
+    </div>
+    <div class="time-display" id="time1">0:00 / 0:00</div>
+    <div class="controls">
+      <button class="play-btn" id="playBtn1" onclick="togglePlay(1)">Play</button>
+    </div>
+    <a class="download-btn" href="songs/sad/Lo-Maan-Liya-(lofi).mp3" download>
+      <img src="images/download-button.png" alt="Download" loading="lazy">
+    </a>
+  </div>
+
+  <div class="player" id="player2">
+    <div class="song-title">2. Wo Ladki Bohot Yaad Aati Hai Lofi</div>
+    <div class="artist">Artist: Alka Yagnik and Kumar Sanu</div>
+    <audio id="audio2" src="songs/sad/WOH-LADKI-BAHUT-YAAD-ATI-HAI-(Lofi).mp3" lazy></audio>
+    <div class="visualizer-container" id="viz2">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    <div class="progress-container" onclick="seek(event, 2)">
+      <div class="progress-filled" id="progress2"></div>
+    </div>
+    <div class="time-display" id="time2">0:00 / 0:00</div>
+    <div class="controls">
+      <button class="play-btn" id="playBtn2" onclick="togglePlay(2)">Play</button>
+    </div>
+    <a class="download-btn" href="songs/sad/WOH-LADKI-BAHUT-YAAD-ATI-HAI-(Lofi).mp3" download>
+      <img src="images/download-button.png" alt="Download" loading="lazy">
+    </a>
+  </div>
+
+  <div class="player" id="player3">
+    <div class="song-title">3. Khairiyat</div>
+    <div class="artist">Artist: Arijit Singh</div>
+    <audio id="audio3" src="songs/sad/Khairiyat.mp3"></audio>
+    <div class="visualizer-container" id="viz3">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    <div class="progress-container" onclick="seek(event, 3)">
+      <div class="progress-filled" id="progress3"></div>
+    </div>
+    <div class="time-display" id="time3">0:00 / 0:00</div>
+    <div class="controls">
+      <button class="play-btn" id="playBtn3" onclick="togglePlay(3)">Play</button>
+    </div>
+    <a class="download-btn" href="songs/sad/Khairiyat.mp3" download>
+      <img src="images/download-button.png" alt="Download">
+    </a>
+  </div>
+
+  <div class="player" id="player4">
+  <div class="song-title">4. KAUN TUJHE YU</div>
+    <div class="artist">Artist: Palak Muchhal</div>
+  <audio id="audio4" src="songs/sad/KAUN-TUJHE.mp3"></audio>
+  <div class="visualizer-container" id="viz4">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <div class="progress-container" onclick="seek(event, 4)">
+    <div class="progress-filled" id="progress4"></div>
+  </div>
+  <div class="time-display" id="time4">0:00 / 0:00</div>
+  <div class="controls">
+    <button class="play-btn" id="playBtn4" onclick="togglePlay(4)">Play</button>
+  </div>
+  <a class="download-btn" href="songs/sad/KAUN-TUJHE.mp3" download>
+    <img src="images/download-button.png" alt="Download">
+  </a>
+  </div>
+
+  <div class="player" id="player5">
+  <div class="song-title">5. Tere Sang Yaara Lofi</div>
+  <div class="artist">Artist: Atif Aslam</div>
+  <audio id="audio5" src="songs/sad/Tere-Sang-Yaara-Slowed_And_Reverb-Lofi.mp3"></audio>
+  <div class="visualizer-container" id="viz5">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <div class="progress-container" onclick="seek(event, 5)">
+    <div class="progress-filled" id="progress5"></div>
+  </div>
+  <div class="time-display" id="time5">0:00 / 0:00</div>
+  <div class="controls">
+    <button class="play-btn" id="playBtn5" onclick="togglePlay(5)">Play</button>
+  </div>
+  <a class="download-btn" href="songs/sad/Tere-Sang-Yaara-Slowed_And_Reverb-Lofi.mp3" download>
+    <img src="images/download-button.png" alt="Download">
+  </a>
+  </div>
+  <div class="player" id="player6">
+  <div class="song-title">6. Juda Hoke Bhi Lofi</div>
+  <div class="artist">Artist: Atif Aslam, Jal, Mithoon</div>
+  <audio id="audio6" src="songs/sad/Juda-Hoke-Bhi-Lofi.mp3"></audio>
+
+  <div class="visualizer-container" id="viz6">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="progress-container" onclick="seek(event, 6)">
+    <div class="progress-filled" id="progress6"></div>
+  </div>
+
+  <div class="time-display" id="time6">0:00 / 0:00</div>
+
+  <div class="controls">
+    <button class="play-btn" id="playBtn6" onclick="togglePlay(6)">Play</button>
+  </div>
+
+  <a class="download-btn" href="songs/sad/Juda-Hoke-Bhi-Lofi.mp3" download>
+    <img src="images/download-button.png" alt="Download">
+  </a>
+  </div>
+  <div class="player" id="player7">
+  <div class="song-title">7. Do Pal</div>
+  <div class="artist">Artist: Lata Mangeshkar and Sonu Nigam</div>
+  <audio id="audio7" src="songs/sad/Do-Pal.mp3"></audio>
+  <div class="visualizer-container" id="viz7">
+    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+  </div>
+  <div class="progress-container" onclick="seek(event, 7)">
+    <div class="progress-filled" id="progress7"></div>
+  </div>
+  <div class="time-display" id="time7">0:00 / 0:00</div>
+  <div class="controls">
+    <button class="play-btn" id="playBtn7" onclick="togglePlay(7)">Play</button>
+  </div>
+  <a class="download-btn" href="songs/sad/Do-Pal.mp3" download>
+    <img src="images/download-button.png" alt="Download">
+  </a>
+  </div>
+  <div class="player" id="player8">
+  <div class="song-title">8. Phir Bhi Aas Lagi Hai Dil Mein Slowed Reverb lofi</div>
+  <div class="artist">Artist: Sagar Kalra (not confirmed)</div>
+  <audio id="audio8" src="songs/sad/phir-bhi-aas-lagi-hai-Dil-mein-slowed-reverb-lofi.mp3"></audio>
+  <div class="visualizer-container" id="viz8">
+    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+  </div>
+  <div class="progress-container" onclick="seek(event, 8)">
+    <div class="progress-filled" id="progress8"></div>
+  </div>
+  <div class="time-display" id="time8">0:00 / 0:00</div>
+  <div class="controls">
+    <button class="play-btn" id="playBtn8" onclick="togglePlay(8)">Play</button>
+  </div>
+  <a class="download-btn" href="songs/sad/phir-bhi-aas-lagi-hai-Dil-mein-slowed-reverb-lofi.mp3" download>
+    <img src="images/download-button.png" alt="Download">
+  </a>
+</div>
+
+<div class="player" id="player9">
+  <div class="song-title">9. Taaron Ke Shehar Slowed Reverb lofi</div>
+  <div class="artist">Artist: Jubin Nautiyal and Neha Kakkar</div>
+  <audio id="audio9" src="songs/sad/Taaron-Ke-Shehar-Slowed-Reverb-Lofi.mp3"></audio>
+  <div class="visualizer-container" id="viz9">
+    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+  </div>
+  <div class="progress-container" onclick="seek(event, 9)">
+    <div class="progress-filled" id="progress9"></div>
+  </div>
+  <div class="time-display" id="time9">0:00 / 0:00</div>
+  <div class="controls">
+    <button class="play-btn" id="playBtn9" onclick="togglePlay(9)">Play</button>
+  </div>
+  <a class="download-btn" href="songs/sad/Taaron-Ke-Shehar-Slowed-Reverb-Lofi.mp3" download>
+    <img src="images/download-button.png" alt="Download">
+  </a>
+</div>
+
+<div class="player" id="player10">
+  <div class="song-title">10. Ek Bewafa Hai Slowed Reverb lofi</div>
+  <div class="artist">Artist: Sonu Nigam</div>
+  <audio id="audio10" src="songs/sad/Ek-bewafa-hai-slowed-reverb-lofi.mp3"></audio>
+  <div class="visualizer-container" id="viz10">
+    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+  </div>
+  <div class="progress-container" onclick="seek(event, 10)">
+    <div class="progress-filled" id="progress10"></div>
+  </div>
+  <div class="time-display" id="time10">0:00 / 0:00</div>
+  <div class="controls">
+    <button class="play-btn" id="playBtn10" onclick="togglePlay(10)">Play</button>
+  </div>
+  <a class="download-btn" href="songs/sad/Ek-bewafa-hai-slowed-reverb-lofi.mp3" download>
+    <img src="images/download-button.png" alt="Download">
+  </a>
+</div>
+  
+  
+  
+  
+  <script src="sad.js"></script>
+  
+
+  </body>
+</html>

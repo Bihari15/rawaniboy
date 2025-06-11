@@ -1,5 +1,5 @@
 
-    let currentlyPlaying = null;
+    let currentlyPlaying = null;
 
     function toggleSidebar() {
       const sidebar = document.getElementById("sidebar");

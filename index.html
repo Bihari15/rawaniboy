@@ -718,45 +718,33 @@ Bhojpuri Lofi & Slowed Reverb Playlist
 </div>
 <script src="song.js"></script>
   <script>
-    <script>
-// Function to shuffle the players
-function shufflePlayers() {
-  const container = document.body; // or a more specific container if you have one
+    function shufflePlayers() {
+  const container = document.body;
   const players = Array.from(document.querySelectorAll('.player'));
   
-  // Shuffle the array of players
-  for (let i = players.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [players[i], players[j]] = [players[j], players[i]];
+  // Check if a shuffled order exists in localStorage
+  let shuffledOrder = localStorage.getItem('shuffledOrder');
+  
+  if (!shuffledOrder) {
+    // If not, generate a new random order
+    for (let i = players.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [players[i], players[j]] = [players[j], players[i]];
+    }
+    // Save the order to localStorage
+    shuffledOrder = players.map(player => player.id).join(',');
+    localStorage.setItem('shuffledOrder', shuffledOrder);
+  } else {
+    // If order exists, restore it
+    const order = shuffledOrder.split(',');
+    players.sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
   }
   
-  // Re-append the shuffled players to the container
   players.forEach(player => container.appendChild(player));
-  
-  // Update the song numbers after shuffling
   updateSongNumbers();
 }
 
-// Function to update song numbers after shuffling
-function updateSongNumbers() {
-  const players = document.querySelectorAll('.player');
-  players.forEach((player, index) => {
-    const titleElement = player.querySelector('.song-title');
-    if (titleElement) {
-      // Extract the current title (without the number)
-      const currentText = titleElement.textContent;
-      const textWithoutNumber = currentText.replace(/^\d+\.\s/, '');
-      // Update with new number
-      titleElement.textContent = `${index + 1}. ${textWithoutNumber}`;
-    }
-  });
-}
-
-// Call the shuffle function when the page loads
-window.onload = function() {
-  shufflePlayers();
-};
-</script>
+window.addEventListener('DOMContentLoaded', shufflePlayers);
   </script>
   
   </body>

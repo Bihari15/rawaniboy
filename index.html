@@ -717,6 +717,47 @@ Bhojpuri Lofi & Slowed Reverb Playlist
 </div>
 </div>
 <script src="song.js"></script>
+  <script>
+    <script>
+// Function to shuffle the players
+function shufflePlayers() {
+  const container = document.body; // or a more specific container if you have one
+  const players = Array.from(document.querySelectorAll('.player'));
+  
+  // Shuffle the array of players
+  for (let i = players.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [players[i], players[j]] = [players[j], players[i]];
+  }
+  
+  // Re-append the shuffled players to the container
+  players.forEach(player => container.appendChild(player));
+  
+  // Update the song numbers after shuffling
+  updateSongNumbers();
+}
+
+// Function to update song numbers after shuffling
+function updateSongNumbers() {
+  const players = document.querySelectorAll('.player');
+  players.forEach((player, index) => {
+    const titleElement = player.querySelector('.song-title');
+    if (titleElement) {
+      // Extract the current title (without the number)
+      const currentText = titleElement.textContent;
+      const textWithoutNumber = currentText.replace(/^\d+\.\s/, '');
+      // Update with new number
+      titleElement.textContent = `${index + 1}. ${textWithoutNumber}`;
+    }
+  });
+}
+
+// Call the shuffle function when the page loads
+window.onload = function() {
+  shufflePlayers();
+};
+</script>
+  </script>
   
   </body>
 </html>

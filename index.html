@@ -718,33 +718,58 @@ Bhojpuri Lofi & Slowed Reverb Playlist
 </div>
 <script src="song.js"></script>
   <script>
-    function shufflePlayers() {
+    // Remove numbers from song titles
+function removeSongNumbers() {
+  const titles = document.querySelectorAll('.song-title');
+  titles.forEach(title => {
+    title.textContent = title.textContent.replace(/^\d+\.\s/, ''); // Removes "1. ", "2. ", etc.
+  });
+}
+
+// Shuffle players randomly (Fisher-Yates algorithm)
+function shufflePlayers() {
   const container = document.body;
   const players = Array.from(document.querySelectorAll('.player'));
   
-  // Check if a shuffled order exists in localStorage
-  let shuffledOrder = localStorage.getItem('shuffledOrder');
-  
-  if (!shuffledOrder) {
-    // If not, generate a new random order
-    for (let i = players.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [players[i], players[j]] = [players[j], players[i]];
-    }
-    // Save the order to localStorage
-    shuffledOrder = players.map(player => player.id).join(',');
-    localStorage.setItem('shuffledOrder', shuffledOrder);
-  } else {
-    // If order exists, restore it
-    const order = shuffledOrder.split(',');
-    players.sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
+  for (let i = players.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [players[i], players[j]] = [players[j], players[i]]; // Swap
   }
   
+  // Re-append shuffled players
   players.forEach(player => container.appendChild(player));
-  updateSongNumbers();
+  
+  // Play a random song
+  playRandomSong();
 }
 
-window.addEventListener('DOMContentLoaded', shufflePlayers);
+// Play a random song automatically
+function playRandomSong() {
+  const players = document.querySelectorAll('.player');
+  const randomIndex = Math.floor(Math.random() * players.length);
+  const randomPlayer = players[randomIndex];
+  
+  // Stop all other audio
+  document.querySelectorAll('audio').forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+  
+  // Play the selected song
+  const audio = randomPlayer.querySelector('audio');
+  const playBtn = randomPlayer.querySelector('.play-btn');
+  
+  if (audio && playBtn) {
+    audio.play().catch(e => console.log("Autoplay blocked - user interaction needed"));
+    playBtn.textContent = 'Pause';
+  }
+}
+
+// Run on page load
+window.addEventListener('DOMContentLoaded', () => {
+  removeSongNumbers(); // Remove numbers first
+  shufflePlayers();    // Then shuffle + play random song
+});
   </script>
   
   </body>

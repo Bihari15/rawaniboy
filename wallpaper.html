@@ -2,592 +2,506 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rawani boy wallpaper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rawani boy shooting game</title>
     <style>
-        :root {
-            --primary-color: #1a1a2e;
-            --secondary-color: #16213e;
-            --accent-color: #e94560;
-            --light-color: #f1f1f1;
-            --dark-color: #0f0f1a;
-            --header-color: rgba(10, 10, 20, 0.9);
-            --card-color: rgba(30, 30, 50, 0.7);
-        }
-
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-        }
-
-        body {
-            background: var(--dark-color);
-            color: var(--light-color);
-            min-height: 100vh;
-            padding: 20px;
-            background-image: 
-                radial-gradient(circle at 25% 25%, rgba(74, 20, 140, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(233, 30, 99, 0.15) 0%, transparent 50%);
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 30px;
-            background: var(--header-color);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #ff8a00, #e52e71);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            letter-spacing: 1px;
-        }
-
-        header p {
-            font-size: 15px;
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .search-container {
             display: flex;
             justify-content: center;
-            margin: 30px 0;
-        }
-
-        #search-input {
-            padding: 15px 25px;
-            width: 60%;
-            border: none;
-            border-radius: 30px 0 0 30px;
-            font-size: 1rem;
-            outline: none;
-            background: rgba(20, 20, 40, 0.8);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        #search-input:focus {
-            background: rgba(30, 30, 50, 0.9);
-            border-color: rgba(233, 30, 96, 0.5);
-            box-shadow: 0 0 15px rgba(233, 30, 96, 0.2);
-        }
-
-        #search-button {
-            padding: 15px 30px;
-            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-            color: white;
-            border: none;
-            border-radius: 0 30px 30px 0;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-left: none;
-        }
-
-        #search-button:hover {
-            background: linear-gradient(135deg, #f05, var(--accent-color));
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(233, 30, 96, 0.3);
-        }
-
-        .wallpapers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .wallpaper-item {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
-            background: var(--card-color);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .wallpaper-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
-            border-color: rgba(233, 30, 96, 0.3);
-        }
-
-        .wallpaper-img-container {
-            width: 100%;
-            overflow: hidden;
-            flex-grow: 1;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.2);
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            overflow: hidden;
+            touch-action: manipulation;
         }
 
-        .wallpaper-img {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
+        .game-container {
+            position: relative;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
         }
 
-        .wallpaper-item:hover .wallpaper-img {
-            transform: scale(1.05);
+        canvas {
+            width: 100%;
+            max-height: 80vh;
+            border: 3px solid #00f7ff;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.5);
+            background-color: #0f0f1f;
+            touch-action: none;
         }
 
-        .overlay {
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .score-display {
             display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            text-shadow: 0 0 5px #00f7ff;
+            padding: 0 10px;
+        }
+
+        .game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(10, 10, 30, 0.9);
+            padding: 20px 40px;
+            border: 2px solid #00f7ff;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 247, 255, 0.7);
+            display: none;
+            z-index: 10;
+            width: 70%;
+            max-width: 300px;
+        }
+
+        .game-over h2 {
+            color: #ff3e3e;
+            margin-top: 0;
+            font-size: 2em;
+        }
+
+        button {
+            background: linear-gradient(135deg, #00f7ff, #0084ff);
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.7);
+        }
+
+        .controls {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #aaa;
+            padding: 0 10px;
+        }
+
+        .mobile-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
             gap: 10px;
         }
 
-        .wallpaper-item:hover .overlay {
-            opacity: 1;
-        }
-
-        .action-btn {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-
-        .download-btn {
-            background: linear-gradient(135deg, var(--accent-color), #c2185b);
-            color: white;
-        }
-
-        .preview-btn {
-            background: linear-gradient(135deg, #4a148c, #7b1fa2);
-            color: white;
-        }
-
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .download-btn:hover {
-            background: linear-gradient(135deg, #f05, var(--accent-color));
-        }
-
-        .preview-btn:hover {
-            background: linear-gradient(135deg, #7b1fa2, #4a148c);
-        }
-
-        /* Preview Modal */
-        .preview-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .preview-modal.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .preview-content {
-            max-width: 90%;
-            max-height: 90%;
-            position: relative;
-        }
-
-        .preview-img {
-            max-width: 100%;
-            max-height: 80vh;
-            width: auto;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-        }
-
-        .close-preview {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
+        .mobile-btn {
+            background: rgba(0, 247, 255, 0.2);
+            border: 2px solid #00f7ff;
             border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
+            width: 60px;
+            height: 60px;
             display: flex;
-            align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            align-items: center;
+            font-size: 24px;
+            color: #00f7ff;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
-        .close-preview:hover {
-            transform: rotate(90deg);
-            background: #f05;
+        .mobile-btn:active {
+            background: rgba(0, 247, 255, 0.4);
         }
 
-        .no-results {
-            text-align: center;
-            grid-column: 1 / -1;
-            padding: 50px;
-            font-size: 1.2rem;
-            color: var(--light-color);
-            background: var(--card-color);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Loading indicator */
-        .loading-indicator {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            font-size: 1.2rem;
-            color: var(--light-color);
-        }
-
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            border-top: 4px solid var(--accent-color);
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @media (max-width: 768px) {
-            .wallpapers-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
-            #search-input {
-                width: 70%;
-                padding: 12px 20px;
-            }
-
-            #search-button {
-                padding: 12px 25px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .wallpapers-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            #search-input {
-                width: 80%;
-                padding: 10px 15px;
-            }
-
-            header {
-                padding: 20px;
-            }
-
-            .overlay {
-                flex-direction: column;
-                gap: 8px;
-                padding: 15px;
-            }
-
-            .action-btn {
-                width: 100%;
+        @media (min-width: 768px) {
+            .mobile-controls {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Rawani boy wallpapers</h1>
-            <p>Premium HD wallpapers for your mobile.</p>
-            <p>To download the wallpaper, follow the steps given below.<br>Step 1. Click on whatever you want to download.<br>Step 2. Click on preview to view image or click on download to download image.</p>
-            
-        </header>
-
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search wallpapers...">
-            <button id="search-button">Search</button>
+    <div class="game-container">
+        <div class="score-display">
+            <div>Score: <span id="score">0</span></div>
+            <div>High Score: <span id="high-score">0</span></div>
         </div>
-
-        <div class="loading-indicator" id="loading-indicator">
-            <div class="spinner"></div>
-            Loading wallpapers...
+        <canvas id="gameCanvas"></canvas>
+        <div class="game-over" id="gameOver">
+            <h2>GAME OVER</h2>
+            <p>Your score: <span id="final-score">0</span></p>
+            <button id="restart-btn">Play Again</button>
         </div>
-
-        <div class="wallpapers-grid" id="wallpapers-container">
-            <!-- Wallpapers will be inserted here by JavaScript -->
+        <div class="controls">
+            <p>Desktop: Arrow Keys to Move | Automatic Fire</p>
         </div>
-    </div>
-
-    <!-- Preview Modal -->
-    <div class="preview-modal" id="preview-modal">
-        <div class="preview-content">
-            <button class="close-preview" id="close-preview">&times;</button>
-            <img class="preview-img" id="preview-img" src="" alt="Wallpaper Preview">
+        <div class="mobile-controls">
+            <div class="mobile-btn" id="left-btn">←</div>
+            <div class="mobile-btn" id="right-btn">→</div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Wallpaper data
-            const wallpapers = [
-                { src: 'w/1.jpg', alt: 'Dark night with moon' },
-                { src: 'w/2.jpg', alt: 'Dark night with moon' },
-                { src: 'w/3.jpg', alt: 'Dark night with moon' },
-                { src: 'w/4.jpg', alt: 'Dark night with moon' },
-                { src: 'w/5.jpg', alt: 'Dark night with moon' },
-                { src: 'w/6.jpg', alt: 'Dark night with moon' },
-                { src: 'w/7.jpg', alt: 'cloud in cloudy weather' },
-                { src: 'w/8.jpg', alt: 'full moon in desert' },
-                { src: 'w/9.jpg', alt: 'I am alone in cloudy weather with moon' },
-                { src: 'w/10.jpg', alt: 'nest a beauty of nature' },
-                { src: 'w/11.jpg', alt: 'cloudy weather' },
-                { src: 'w/12.jpg', alt: 'Moon with cloudy weather' },
-                { src: 'w/13.jpg', alt: 'full moon with cloudy weather' },
-                { src: 'w/14.jpg', alt: 'alone with moon in cloudy weather' },
-                { src: 'w/15.jpg', alt: 'Car on desert' },
-                { src: 'w/16.jpg', alt: 'car in jungle forest' },
-                { src: 'w/17.jpg', alt: 'nature' },
-                { src: 'w/18.jpg', alt: 'leaf with water (nature)' },
-                { src: 'w/19.jpg', alt: 'leaf with water (nature)' },
-                { src: 'w/20.jpg', alt: 'flower with water (nature)' },
-                { src: 'w/21.jpg', alt: 'leaf in nature' },
-                { src: 'w/22.jpg', alt: 'car in mountain road' },
-                { src: 'w/23.jpg', alt: 'black car in smoke' }
-            ];
+        // Game setup
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreDisplay = document.getElementById('score');
+        const highScoreDisplay = document.getElementById('high-score');
+        const finalScoreDisplay = document.getElementById('final-score');
+        const gameOverScreen = document.getElementById('gameOver');
+        const restartBtn = document.getElementById('restart-btn');
+        
+        // Mobile controls
+        const leftBtn = document.getElementById('left-btn');
+        const rightBtn = document.getElementById('right-btn');
+        
+        // Game variables
+        let score = 0;
+        let highScore = localStorage.getItem('highScore') || 0;
+        let gameRunning = false;
+        let animationId;
+        let difficultyLevel = 0;
+        
+        // Player
+        const player = {
+            width: 30,
+            height: 50,
+            speed: 5,
+            color: '#00f7ff',
+            bullets: [],
+            x: 0,
+            y: 0,
+            fireRate: 20, // Higher number = slower fire rate
+            fireCounter: 0
+        };
+        
+        // Enemies
+        const enemies = [];
+        const enemySize = 40;
+        const enemyColors = ['#8B4513', '#A0522D', '#CD853F', '#D2B48C'];
+        let enemySpawnRate = 120; // Slower spawn rate
+        let enemySpawnCounter = 0;
+        
+        // Controls
+        const keys = {
+            ArrowLeft: false,
+            ArrowRight: false
+        };
+        
+        // Touch controls
+        let touchX = null;
 
-            const wallpapersContainer = document.getElementById('wallpapers-container');
-            const searchInput = document.getElementById('search-input');
-            const searchButton = document.getElementById('search-button');
-            const previewModal = document.getElementById('preview-modal');
-            const previewImg = document.getElementById('preview-img');
-            const closePreview = document.getElementById('close-preview');
-            const loadingIndicator = document.getElementById('loading-indicator');
-
-            // Function to shuffle array
-            function shuffleArray(array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
+        // Set canvas size
+        function resizeCanvas() {
+            const maxWidth = Math.min(500, window.innerWidth - 40);
+            const maxHeight = Math.min(700, window.innerHeight - 200);
+            const ratio = 4/3;
+            
+            if (maxWidth / maxHeight > ratio) {
+                canvas.width = maxHeight * ratio;
+                canvas.height = maxHeight;
+            } else {
+                canvas.width = maxWidth;
+                canvas.height = maxWidth / ratio;
+            }
+            
+            canvas.style.width = canvas.width + 'px';
+            canvas.style.height = canvas.height + 'px';
+            
+            player.x = canvas.width / 2 - player.width / 2;
+            player.y = canvas.height - player.height - 10;
+        }
+        
+        // Calculate enemy speed based on score
+        function getEnemySpeed() {
+            // Base speed increases every 50 points
+            const speedIncrease = Math.floor(score / 50) * 0.2;
+            // Random variation between 0.8 and 1.2 plus the speed increase
+            return 0.8 + Math.random() * 0.4 + speedIncrease;
+        }
+        
+        // Player functions
+        function updatePlayer() {
+            if (keys.ArrowLeft && player.x > 0) {
+                player.x -= player.speed;
+            }
+            if (keys.ArrowRight && player.x < canvas.width - player.width) {
+                player.x += player.speed;
+            }
+            
+            // Automatic firing at slower rate
+            player.fireCounter++;
+            if (player.fireCounter >= player.fireRate) {
+                fireBullet();
+                player.fireCounter = 0;
+            }
+        }
+        
+        function drawPlayer() {
+            // Draw ship
+            ctx.fillStyle = player.color;
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+            
+            // Draw cockpit
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(player.x + 10, player.y + 10, 10, 10);
+        }
+        
+        // Bullet functions
+        function fireBullet() {
+            player.bullets.push({
+                x: player.x + player.width / 2 - 2.5,
+                y: player.y,
+                width: 5,
+                height: 15,
+                speed: 7,
+                color: '#ffffff'
+            });
+        }
+        
+        function updateBullets() {
+            for (let i = player.bullets.length - 1; i >= 0; i--) {
+                player.bullets[i].y -= player.bullets[i].speed;
+                
+                if (player.bullets[i].y < 0) {
+                    player.bullets.splice(i, 1);
                 }
-                return array;
             }
-
-            // Function to check if image exists
-            async function checkImage(url) {
-                return new Promise((resolve) => {
-                    const img = new Image();
-                    img.onload = () => resolve(true);
-                    img.onerror = () => resolve(false);
-                    img.src = url;
+        }
+        
+        function drawBullets() {
+            ctx.fillStyle = '#ffffff';
+            player.bullets.forEach(bullet => {
+                ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+            });
+        }
+        
+        // Enemy functions
+        function spawnEnemies() {
+            enemySpawnCounter++;
+            if (enemySpawnCounter >= enemySpawnRate) {
+                enemies.push({
+                    x: Math.random() * (canvas.width - enemySize),
+                    y: -enemySize,
+                    width: enemySize,
+                    height: enemySize,
+                    speed: getEnemySpeed(), // Use dynamic speed calculation
+                    color: enemyColors[Math.floor(Math.random() * enemyColors.length)],
+                    sway: Math.random() * 2 - 1
                 });
+                
+                enemySpawnCounter = 0;
+                enemySpawnRate = Math.max(100, 150 - Math.floor(score / 10)); // Adjusted spawn rate
             }
-
-            // Function to load wallpapers with error handling
-            async function loadWallpapers() {
-                loadingIndicator.style.display = 'block';
-                wallpapersContainer.innerHTML = '';
-
-                // Shuffle wallpapers
-                const shuffledWallpapers = shuffleArray([...wallpapers]);
-                const availableWallpapers = [];
-
-                // Check which wallpapers actually exist
-                for (const wallpaper of shuffledWallpapers) {
-                    const exists = await checkImage(wallpaper.src);
-                    if (exists) {
-                        availableWallpapers.push(wallpaper);
+        }
+        
+        function updateEnemies() {
+            for (let i = enemies.length - 1; i >= 0; i--) {
+                enemies[i].y += enemies[i].speed;
+                enemies[i].x += enemies[i].sway * 0.3;
+                
+                // Keep enemies within bounds
+                if (enemies[i].x < 0) enemies[i].x = 0;
+                if (enemies[i].x > canvas.width - enemies[i].width) enemies[i].x = canvas.width - enemies[i].width;
+                
+                if (enemies[i].y > canvas.height) {
+                    enemies.splice(i, 1);
+                }
+            }
+        }
+        
+        function drawEnemies() {
+            enemies.forEach(enemy => {
+                // Draw sloth-like enemy
+                ctx.fillStyle = enemy.color;
+                ctx.beginPath();
+                ctx.roundRect(enemy.x, enemy.y, enemy.width, enemy.height, [0, 0, 15, 15]);
+                ctx.fill();
+                
+                // Draw face
+                ctx.fillStyle = '#000';
+                ctx.beginPath();
+                ctx.arc(enemy.x + enemy.width/2, enemy.y + enemy.height/3, 5, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(enemy.x + enemy.width/2, enemy.y + enemy.height/2, 8, 0, Math.PI);
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            });
+        }
+        
+        // Collision detection
+        function checkCollisions() {
+            // Bullet-enemy collisions
+            for (let i = player.bullets.length - 1; i >= 0; i--) {
+                for (let j = enemies.length - 1; j >= 0; j--) {
+                    if (checkCollision(player.bullets[i], enemies[j])) {
+                        player.bullets.splice(i, 1);
+                        enemies.splice(j, 1);
+                        score += 5;
+                        scoreDisplay.textContent = score;
+                        
+                        // Check if we've crossed a new 50-point threshold
+                        const newLevel = Math.floor(score / 50);
+                        if (newLevel > difficultyLevel) {
+                            difficultyLevel = newLevel;
+                            // You could add visual feedback here if you want
+                        }
+                        
+                        break;
                     }
                 }
-
-                if (availableWallpapers.length === 0) {
-                    wallpapersContainer.innerHTML = `
-                        <div class="no-results">
-                            No wallpapers found.</div>
-                    `;
-                } else {
-                    displayWallpapers(availableWallpapers);
-                }
-
-                loadingIndicator.style.display = 'none';
             }
-
-            // Display all wallpapers initially
-            loadWallpapers();
-
-            // Search functionality
-            searchButton.addEventListener('click', searchWallpapers);
-            searchInput.addEventListener('keyup', function(e) {
-                if (e.key === 'Enter') {
-                    searchWallpapers();
+            
+            // Player-enemy collisions
+            for (let i = enemies.length - 1; i >= 0; i--) {
+                if (checkCollision(player, enemies[i])) {
+                    gameOver();
+                    break;
                 }
-            });
-
-            // Close preview modal
-            closePreview.addEventListener('click', function() {
-                previewModal.classList.remove('active');
-            });
-
-            // Close modal when clicking outside
-            previewModal.addEventListener('click', function(e) {
-                if (e.target === previewModal) {
-                    previewModal.classList.remove('active');
-                }
-            });
-
-            function searchWallpapers() {
-                const searchTerm = searchInput.value.toLowerCase();
-                if (searchTerm.trim() === '') {
-                    loadWallpapers();
-                    return;
-                }
-
-                loadingIndicator.style.display = 'block';
-                wallpapersContainer.innerHTML = '';
-
-                const filteredWallpapers = wallpapers.filter(wallpaper => 
-                    wallpaper.alt.toLowerCase().includes(searchTerm)
-                );
-
-                if (filteredWallpapers.length === 0) {
-                    wallpapersContainer.innerHTML = '<div class="no-results">No wallpapers found matching your search.</div>';
-                } else {
-                    displayWallpapers(filteredWallpapers);
-                }
-
-                loadingIndicator.style.display = 'none';
             }
-
-            function displayWallpapers(wallpapersToDisplay) {
-                wallpapersContainer.innerHTML = '';
-
-                wallpapersToDisplay.forEach(wallpaper => {
-                    const wallpaperItem = document.createElement('div');
-                    wallpaperItem.className = 'wallpaper-item';
+        }
+        
+        function checkCollision(obj1, obj2) {
+            return obj1.x < obj2.x + obj2.width &&
+                   obj1.x + obj1.width > obj2.x &&
+                   obj1.y < obj2.y + obj2.height &&
+                   obj1.y + obj1.height > obj2.y;
+        }
+        
+        // Game over
+        function gameOver() {
+            gameRunning = false;
+            cancelAnimationFrame(animationId);
+            
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('highScore', highScore);
+                highScoreDisplay.textContent = highScore;
+            }
+            
+            finalScoreDisplay.textContent = score;
+            gameOverScreen.style.display = 'block';
+        }
+        
+        // Reset game
+        function resetGame() {
+            score = 0;
+            difficultyLevel = 0;
+            scoreDisplay.textContent = score;
+            player.bullets = [];
+            enemies.length = 0;
+            player.x = canvas.width / 2 - player.width / 2;
+            player.y = canvas.height - player.height - 10;
+            
+            gameOverScreen.style.display = 'none';
+            gameRunning = true;
+            gameLoop();
+        }
+        
+        // Main game loop
+        function gameLoop() {
+            if (!gameRunning) return;
+            
+            // Clear canvas with starry background
+            ctx.fillStyle = '#0f0f1f';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw stars
+            ctx.fillStyle = '#ffffff';
+            for (let i = 0; i < 50; i++) {
+                const x = Math.sin(i * 100) * canvas.width/2 + canvas.width/2;
+                const y = i * canvas.height/50;
+                const size = Math.random() * 2;
+                ctx.fillRect(x, y, size, size);
+            }
+            
+            updatePlayer();
+            drawPlayer();
+            updateBullets();
+            drawBullets();
+            spawnEnemies();
+            updateEnemies();
+            drawEnemies();
+            checkCollisions();
+            
+            animationId = requestAnimationFrame(gameLoop);
+        }
+        
+        // Initialize game
+        function init() {
+            resizeCanvas();
+            highScoreDisplay.textContent = highScore;
+            
+            // Event listeners
+            window.addEventListener('keydown', (e) => {
+                if (keys.hasOwnProperty(e.key)) {
+                    keys[e.key] = true;
+                    e.preventDefault();
+                }
+            });
+            
+            window.addEventListener('keyup', (e) => {
+                if (keys.hasOwnProperty(e.key)) {
+                    keys[e.key] = false;
+                    e.preventDefault();
+                }
+            });
+            
+            // Mobile controls
+            leftBtn.addEventListener('touchstart', () => { keys.ArrowLeft = true; });
+            leftBtn.addEventListener('touchend', () => { keys.ArrowLeft = false; });
+            rightBtn.addEventListener('touchstart', () => { keys.ArrowRight = true; });
+            rightBtn.addEventListener('touchend', () => { keys.ArrowRight = false; });
+            
+            // Touch controls
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                touchX = touch.clientX;
+            });
+            
+            canvas.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                if (touchX !== null) {
+                    const touch = e.touches[0];
+                    const newX = touch.clientX;
                     
-                    wallpaperItem.innerHTML = `
-                        <div class="wallpaper-img-container">
-                            <img src="${wallpaper.src}" alt="${wallpaper.alt}" class="wallpaper-img" loading="lazy">
-                        </div>
-                        <div class="overlay">
-                            <button class="action-btn preview-btn" data-src="${wallpaper.src}">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                                Preview
-                            </button>
-                            <button class="action-btn download-btn" data-src="${wallpaper.src}">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                    <polyline points="7 10 12 15 17 10"></polyline>
-                                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                                </svg>
-                                Download
-                            </button>
-                        </div>
-                    `;
+                    if (newX < touchX - 10) {
+                        keys.ArrowLeft = true;
+                        keys.ArrowRight = false;
+                    } else if (newX > touchX + 10) {
+                        keys.ArrowRight = true;
+                        keys.ArrowLeft = false;
+                    }
                     
-                    wallpapersContainer.appendChild(wallpaperItem);
-                });
-
-                // Add event listeners to download buttons
-                document.querySelectorAll('.download-btn').forEach(button => {
-                    button.addEventListener('click', function() {
-                        downloadWallpaper(this.getAttribute('data-src'));
-                    });
-                });
-
-                // Add event listeners to preview buttons
-                document.querySelectorAll('.preview-btn').forEach(button => {
-                    button.addEventListener('click', function() {
-                        previewWallpaper(this.getAttribute('data-src'));
-                    });
-                });
-            }
-
-            function downloadWallpaper(imageSrc) {
-                // Create a temporary anchor element
-                const link = document.createElement('a');
-                link.href = imageSrc;
-                link.download = 'Rawani boy wallpaper.jpg';
-                
-                // Append to the body, click it, and then remove it
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-
-            function previewWallpaper(imageSrc) {
-                previewImg.src = imageSrc;
-                previewModal.classList.add('active');
-            }
-        });
+                    touchX = newX;
+                }
+            });
+            
+            canvas.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                keys.ArrowLeft = false;
+                keys.ArrowRight = false;
+                touchX = null;
+            });
+            
+            restartBtn.addEventListener('click', resetGame);
+            
+            // Start the game
+            gameRunning = true;
+            gameLoop();
+        }
+        
+        // Start when page loads
+        window.addEventListener('load', init);
+        window.addEventListener('resize', resizeCanvas);
     </script>
 </body>
 </html>
